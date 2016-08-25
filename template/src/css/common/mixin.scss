@@ -1,0 +1,40 @@
+// clearfix
+@mixin clearfix {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+// text ellipsis, usage: @include ellipsis(2)
+@mixin ellipsis ($line: 1) {
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    @if $line == 1 {
+        white-space: nowrap;
+    }
+    @else {
+        display: flex;
+        flex-direction: vertical;
+        -webkit-line-clamp: $line;
+    }
+}
+
+// text shadow
+@mixin textShadow ($width, $color) {
+    text-shadow:  #{$width}  #{$width} 0 $color,
+                  #{$width} -#{$width} 0 $color,
+                 -#{$width}  #{$width} 0 $color,
+                 -#{$width} -#{$width} 0 $color,
+                  #{$width}          0 0 $color,
+                 -#{$width}          0 0 $color,
+                          0  #{$width} 0 $color,
+                          0 -#{$width} 0 $color;
+}
+
+// background linear gradient
+@mixin bgGrad ($start, $end, $percentage: 50%) {
+    background: linear-gradient(0deg, $end, $end $percentage, $start $percentage, $start);
+}

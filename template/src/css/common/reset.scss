@@ -1,0 +1,21 @@
+body,
+h1, h2, h3, h4, h5, h6,
+p,
+ol, ul {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+}
+ol, ul {
+  list-style: none;
+}
+img {
+  border: 0;
+  vertical-align: top;
+}
+a, b, i, s, u {
+  text-decoration: none;
+}
+* {
+  -webkit-tap-highlight-color: transparent;
+}

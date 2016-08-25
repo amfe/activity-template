@@ -1,0 +1,22 @@
+{
+  "name": "tpl-activity",
+  "version": "1.0.0",
+  "description": "activity template for adam",
+  "author": {
+    "author": "shangzuo.zm",
+    "email": "shangzuo.zm@alibaba-inc.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:adam-templates/tpl-activity.git"
+  },
+  "keywords": [
+    "adam",
+    "template",
+    "es6",
+    "rollup",
+    "postcss",
+    "npm-scripts"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,58 @@
+{
+  "name": "{{ project }}",
+  "description": "An awesome project via {{ user }}",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:{{ user }}/{{ project }}.git"
+  },
+  "author": {
+    "name": "{{ user }}",
+    "email": "{{ email }}"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "css:pre": "node-sass src/css/main.scss",
+    "css:post": "postcss --config postcss.config.js",
+    "css": "npm run css:pre -s | npm run css:post",
+    "lint": "eslint --config .eslintrc src/js/**/*.js",
+    "prejs": "npm run lint",
+    "js": "rollup --config rollup.config.js",
+    "watch:css": "nodemon --exec 'npm run css' --watch ./src/css --ext scss",
+    "watch:js": "nodemon --exec 'npm run js' --watch ./src/js --ext js",
+    "watch": "npm run watch:css -s & npm run watch:js -s",
+    "serve": "browser-sync start --config browsersync.config.js",
+    "dev": "npm run watch & npm run serve",
+    "compile": "npm run css && npm run js",
+    "minify:js": "uglifyjs dist/bundle.js --compress --mangle --output dist/bundle.js",
+    "combo": "htmlone --path src --output dist",
+    "prebuild": "npm run clean -s",
+    "build": "NODE_ENV=production npm run compile",
+    "postbuild": "npm run minify:js && npm run combo -s"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@ali/htmlone-core": "^1.0.3",
+    "autoprefixer": "^6.4.0",
+    "babel-core": "^6.13.2",
+    "babel-plugin-external-helpers": "^6.8.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.13.2",
+    "browser-sync": "^2.14.0",
+    "cssnano": "^3.7.4",
+    "eslint": "^3.3.1",
+    "node-sass": "^3.8.0",
+    "nodemon": "^1.10.2",
+    "postcss-cli": "^2.5.2",
+    "postcss-px2rem": "^0.3.0",
+    "rimraf": "^2.5.4",
+    "rollup": "^0.34.10",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^3.3.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "uglify-js": "^2.7.3"
+  }
+}
